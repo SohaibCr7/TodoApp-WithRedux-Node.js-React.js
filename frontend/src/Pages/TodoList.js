@@ -1,9 +1,9 @@
 import React from "react";
 import "./TodoList.css";
 import { connect } from "react-redux";
-import NewTodoForm from "./NewTodoForm";
-import TodoListItem from "./TodoListItem";
-import { removeTodo } from "./actions";
+import NewTodoForm from "../Components/NewTodoForm";
+import TodoListItem from "../Components/TodoListItem";
+import { removeTodo } from "../Store/actions";
 const TodoList = ({ todos = [], onRemovePressed }) => {
   return (
     <div className="list-wrapper">

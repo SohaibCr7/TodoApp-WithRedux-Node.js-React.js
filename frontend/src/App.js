@@ -1,12 +1,8 @@
-import './App.css';
-import TodoList from "./todos/TodoList";
-import Example from "./Example";
-
+import LoginFoam from "./Pages/LoginFoam";
 function App() {
   return (
     <div className="App">
-      <TodoList />
-      <Example />
+      <LoginFoam />
     </div>
   );
 }

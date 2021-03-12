@@ -1,5 +1,5 @@
 import {createStore, combineReducers} from "redux";
-import {todos} from "./todos/reducers";
+import {todos} from "./reducers";
 // Here i Get the reducer from reducer file
 const reducers = {todos};
 
