@@ -1,11 +1,11 @@
 import React, { useState } from "react";
-import "./LoginFoam.css";
-import axios from "axios";
-import { BrowserRouter as Router } from "react-router-dom";
-import { Routes, Route } from "react-router-dom";
-let URL = "http://localhost:8080/login";
+import "./SignUpForm.css";
 
-const LoginFoam = () => {
+import axios from "axios";
+import { Link } from "react-router-dom";
+let URL = "http://localhost:8080/signup";
+
+const SignUpForm = (props) => {
   // User States
   const [user, setUser] = useState({
     userName: "",
@@ -22,7 +22,7 @@ const LoginFoam = () => {
     });
   }
 
-  // Sign Up Funtion 
+  // Sign Up Funtion
   function SignUpUser() {
     axios
       .post(URL, {
@@ -31,15 +31,17 @@ const LoginFoam = () => {
         password: user.userPassword,
       })
       .then((Response) => {
-        alert(`User Registered Sucessfully: ${Response.data.username}`);
+        props.history.push("/login")
+        // alert(`User Registered Sucessfully: ${Response.data.username}`);
       });
   }
-
 
   return (
     <>
       <div className="heading">
-        <h3>SignUp <span>Form</span></h3>
+        <h3>
+          SignUp <span>Form</span>
+        </h3>
       </div>
       <form>
         <div className="container">
@@ -81,9 +83,9 @@ const LoginFoam = () => {
             <button type="reset" className="cancelbtn" defaultValue="Reset">
               Cancel
             </button>
-            
+
             <span className="psw">
-              Forgot <a href="#!">password?</a>
+              <Link to="/ResetPasswordPage">Forgot Password?</Link>
             </span>
           </div>
         </div>
@@ -92,4 +94,4 @@ const LoginFoam = () => {
   );
 };
 
-export default LoginFoam;
+export default SignUpForm;

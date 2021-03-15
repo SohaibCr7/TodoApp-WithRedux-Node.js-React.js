@@ -1,6 +1,38 @@
-import React from "react";
-import "LoginFoam.css";
-export default ResetPasswordPage = () => {
+import {React,useState} from "react";
+import "./SignUpForm.css";
+import axios from "axios"
+
+let URL = "http://localhost:8080/ResetPasswordPage";
+
+function ResetPasswordPage () {
+
+  const [pass, setPass] = useState({
+    userEmail: "",
+    userPassword: "",
+  });
+
+ // Change Fields Function
+ function changeField(event, key) {
+  event.preventDefault();
+  setPass({
+    ...pass,
+    [key]: event.target.value,
+  });
+}
+
+// Reset Password end Point
+function ResetPasswordById(){
+  axios
+  .put(URL,{
+    email: pass.userEmail,
+    password: pass.userPassword,
+  })
+  .then((Response) => {
+    alert(`Password of ${Response.data.email} is Updated...!` )
+  })
+
+}
+
   return (
     <>
       <div className="heading">
@@ -30,11 +62,12 @@ export default ResetPasswordPage = () => {
             onChange={(e) => changeField(e, "userPassword")}
           />
 
-          <button type="button" className="btn1" onClick={SignUpUser}>
-            Sign Up
+          <button type="button" className="btn1" onClick={ResetPasswordById}>
+            Conform
           </button>
         </div>
       </form>
     </>
   );
 };
+export default ResetPasswordPage;
