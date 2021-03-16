@@ -1,11 +1,14 @@
-import React from "react";
+import {React,useEffect} from "react";
 import "./TodoList.css";
 import { connect } from "react-redux";
 import NewTodoForm from "../Components/NewTodoForm";
 import TodoListItem from "../Components/TodoListItem";
 import { removeTodo } from "../Store/actions";
-const TodoList = ({ todos = [], onRemovePressed }) => {
+
+const TodoList = ({ todos = [], onRemovePressed ,props}) => {  
+
   return (
+    
     <div className="list-wrapper">
       <NewTodoForm />
       {todos.map((todo) => (
@@ -13,7 +16,7 @@ const TodoList = ({ todos = [], onRemovePressed }) => {
       ))}
     </div>
   );
-};
+  };
 
 const mapStateToProps = (state) => ({
   todos: state.todos,

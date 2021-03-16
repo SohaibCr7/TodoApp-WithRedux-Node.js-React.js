@@ -12,6 +12,8 @@ mongoose.Promise = global.Promise;
 mongoose.connect("mongodb://localhost/E-commerceDB", {
     useNewUrlParser: true,
     useUnifiedTopology: true
+}, (err) =>{
+    console.log(err)
 });
 
 // Bodyparser Setup

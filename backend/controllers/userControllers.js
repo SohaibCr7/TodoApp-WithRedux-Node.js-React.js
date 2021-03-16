@@ -1,14 +1,16 @@
 import mongoose from "mongoose";
 import { UserSchema } from "../models/userModel";
 
-    const User = mongoose.model("User", UserSchema);
+const User = mongoose.model("User", UserSchema);
 
 export const addNewUser = (req, res) => {
   let newUser = new User(req.body);
 
   newUser.save((error, User) => {
+
     if (error) {
-      res.send(error);
+      console.log("sssss")
+      res.status(500).json(error);
     }
     res.json(User);
   });
@@ -24,20 +26,18 @@ export const getUser = (req, res) => {
 };
 
 export const getUserById = (req, res) => {
-  
+
   try {
     User.findOneAndUpdate(
       { email: req.body.email },
       { password: req.body.password },
       { new: true },
       (err, doc) => {
-        if (err) 
-        {
+        if (err) {
           res.status(500).json(err);
           throw err;
-        } 
-        else 
-        {
+        }
+        else {
           res.json(doc);
         }
       }

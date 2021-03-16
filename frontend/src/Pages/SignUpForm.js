@@ -2,7 +2,6 @@ import React, { useState } from "react";
 import "./SignUpForm.css";
 
 import axios from "axios";
-import { Link } from "react-router-dom";
 let URL = "http://localhost:8080/signup";
 
 const SignUpForm = (props) => {
@@ -31,8 +30,15 @@ const SignUpForm = (props) => {
         password: user.userPassword,
       })
       .then((Response) => {
-        props.history.push("/login")
+        
+        if (Response.status === 200) {
+          props.history.push("/")
+        }
+
         // alert(`User Registered Sucessfully: ${Response.data.username}`);
+      }).catch((Error) => {
+        alert("Sahe Naam daloo hai already")
+        console.log("error",Error)
       });
   }
 
@@ -84,9 +90,6 @@ const SignUpForm = (props) => {
               Cancel
             </button>
 
-            <span className="psw">
-              <Link to="/ResetPasswordPage">Forgot Password?</Link>
-            </span>
           </div>
         </div>
       </form>

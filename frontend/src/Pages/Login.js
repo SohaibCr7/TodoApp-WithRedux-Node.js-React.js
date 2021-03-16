@@ -1,11 +1,12 @@
 import { React, useState } from "react";
-import {Link} from "react-router-dom";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
-import "./SignUpForm.css";
+import "./Login.css";
 
 
 let URL = "http://localhost:8080/login";
+
 export default function Login(props) {
   const [userLogin, setUserLogin] = useState({
     userName: "",
@@ -16,11 +17,21 @@ export default function Login(props) {
     axios.post(URL, {
       username: userLogin.userName,
       password: userLogin.userPassword,
-    }).then((Response) => {
-        console.log("Backend Response: ",Response)
+    })
+      .then((Response) => {
+
+        if (Response.data.message !== undefined) {
+
+          alert(Response.data.message)
+        }
+        else {
+          props.history.push("/TodoList");
+          console.log(" login successful");
+
+        }
         // props.history.push("/login")
         // alert(`User Registered Sucessfully: ${Response.data.username}`);
-      });
+      })
   }
 
   function changeField(event, key) {
@@ -63,6 +74,9 @@ export default function Login(props) {
         </button>
         <span className="psw">
           <Link to="/SignUpForm">Register Your Self</Link>
+        </span>
+        <span className="psw">
+          <Link to="/ResetPasswordPage">    Forgot Password?</Link>
         </span>
       </div>
     </form>

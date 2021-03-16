@@ -1,5 +1,5 @@
 import { addNewUser, getUser,getUserById } from "../controllers/userControllers";
-import { UserLogin } from "../controllers/loginControllers";
+import  UserLogin  from "../controllers/loginController";
 
 const routes = (app) => {
     
