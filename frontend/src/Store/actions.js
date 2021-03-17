@@ -11,3 +11,10 @@ export const removeTodo = (text) => ({
   type: REMOVE_TODO,
   payload: { text },
 });
+
+export const Is_Login = "Login";
+
+export const IsLogin = () => ({
+  type: Is_Login,
+  // payload: {text},
+})

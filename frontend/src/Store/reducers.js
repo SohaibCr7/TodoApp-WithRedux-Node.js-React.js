@@ -1,23 +1,43 @@
-import {CREATE_TODO, REMOVE_TODO} from "./actions";
+import { CREATE_TODO, REMOVE_TODO, Is_Login } from "./actions";
 
-export const todos = (state = [],action) =>{
+export const todos = (state = {
+    data: [],
+    isUserLoggedIn: false,
+    progress: false
+}, action) => {
 
-    const {type,payload} = action;
+    const { type, payload } = action;
 
-    switch(type){
+    switch (type) {
         case CREATE_TODO: {
-            const {text} = payload;
+            const { text } = payload;
 
-            const newTodo ={
+            const newTodo = {
                 text,
                 isCompleted: false,
             };
-            return state.concat(newTodo);
+            return {
+                ...state,
+                data: state.data.concat(newTodo)
+            }
+            //return state.concat(newTodo);
+        }
+
+        case Is_Login: {
+            debugger
+            return {
+                ...state,
+                isUserLoggedIn: true
+            }
         }
 
         case REMOVE_TODO: {
-            const {text} = payload;
-            return state.filter(todo => todo.text !== text);
+            const { text } = payload;
+            return {
+                ...state,
+                data: state.data.filter(todo => todo.text != text)
+            }
+            //state.filter(todo => todo.text !== text);
         }
 
         default:

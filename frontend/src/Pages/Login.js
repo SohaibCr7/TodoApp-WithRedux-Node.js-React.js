@@ -1,9 +1,12 @@
 import { React, useState } from "react";
 import { Link } from "react-router-dom";
-
 import axios from "axios";
 import "./Login.css";
+import { store } from "../Store/store";
 
+import { IsLogin } from "../Store/actions";
+import { connect } from "react-redux";
+//const localStoragr = localStorage.getItem("isLoggedIn")
 
 let URL = "http://localhost:8080/login";
 
@@ -25,8 +28,12 @@ export default function Login(props) {
           alert(Response.data.message)
         }
         else {
+          // debugger
+          store.dispatch(IsLogin())
           props.history.push("/TodoList");
-          console.log(" login successful");
+          // console.log("sss",store)
+          // localStorage.setItem("isLoggedIn", true)
+          // console.log(" login successful");
 
         }
         // props.history.push("/login")

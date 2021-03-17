@@ -6,3 +6,5 @@ const reducers = {todos};
 const rootReducer = combineReducers(reducers);
 
 export const configureStore = () => createStore(rootReducer);
+
+export const store =  configureStore()
