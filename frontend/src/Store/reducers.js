@@ -3,7 +3,7 @@ import { CREATE_TODO, REMOVE_TODO, Is_Login } from "./actions";
 export const todos = (state = {
     data: [],
     isUserLoggedIn: false,
-    progress: false
+    progress: false,
 }, action) => {
 
     const { type, payload } = action;
@@ -24,7 +24,6 @@ export const todos = (state = {
         }
 
         case Is_Login: {
-            debugger
             return {
                 ...state,
                 isUserLoggedIn: true

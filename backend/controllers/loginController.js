@@ -5,7 +5,7 @@ import { UserSchema } from "../models/userModel";
 const User = mongoose.model("User", UserSchema);
 
 const UserLogin = (req, res) => {
-
+    console.log(req,res)
     User.findOne(
         { username: req.body.username },
         (error, doc) => {

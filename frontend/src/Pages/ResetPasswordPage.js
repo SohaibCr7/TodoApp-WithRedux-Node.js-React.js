@@ -24,11 +24,11 @@ function ResetPasswordPage () {
 function ResetPasswordById(){
   axios
   .put(URL,{
-    email: pass.userEmail,
+    username: pass.userEmail,
     password: pass.userPassword,
   })
   .then((Response) => {
-    alert(`Password of ${Response.data.email} is Updated...!` )
+    alert(`Password of ${Response.config.data} is Updated...!` )
   })
 
 }

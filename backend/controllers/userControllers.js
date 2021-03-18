@@ -26,10 +26,10 @@ export const getUser = (req, res) => {
 };
 
 export const getUserById = (req, res) => {
-
+   console.log( req.body.username)
   try {
     User.findOneAndUpdate(
-      { email: req.body.email },
+      { username: req.body.username },
       { password: req.body.password },
       { new: true },
       (err, doc) => {
